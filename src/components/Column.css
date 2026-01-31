@@ -1,0 +1,145 @@
+.column {
+  flex: 1;
+  min-width: 280px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s;
+}
+
+.column.drag-over {
+  background: #e8f4f8;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.column-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.column-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.column-count {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.column-add-button {
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.column-add-button:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.add-card-button {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b7280;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.add-card-button:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.add-card-form {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.add-card-input {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #3b82f6;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.add-card-input:focus {
+  border-color: #2563eb;
+}
+
+.add-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.add-card-submit,
+.add-card-cancel {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.add-card-submit {
+  background: #3b82f6;
+  color: white;
+}
+
+.add-card-submit:hover {
+  background: #2563eb;
+}
+
+.add-card-cancel {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.add-card-cancel:hover {
+  background: #d1d5db;
+}
+
+.column-cards {
+  flex: 1;
+  min-height: 100px;
+}
+

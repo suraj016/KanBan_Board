@@ -1,0 +1,44 @@
+.kanban-board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  min-height: 100vh;
+  background: #f0f0f0;
+}
+
+.card-overlay {
+  opacity: 0.8;
+  transform: rotate(5deg);
+}
+
+@media (max-width: 768px) {
+  .kanban-board {
+    flex-direction: column;
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .column {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .kanban-board {
+    padding: 8px;
+    gap: 12px;
+  }
+
+  .column {
+    padding: 12px;
+  }
+
+  .column-header {
+    padding: 10px 12px;
+  }
+
+  .column-title {
+    font-size: 16px;
+  }
+}
+

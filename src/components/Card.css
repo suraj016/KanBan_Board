@@ -1,0 +1,78 @@
+.card {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+}
+
+.card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card.dragging {
+  opacity: 0.5;
+}
+
+.card-indicator {
+  width: 4px;
+  height: 100%;
+  border-radius: 2px;
+  flex-shrink: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.card-title {
+  flex: 1;
+  word-wrap: break-word;
+  user-select: none;
+  padding-left: 8px;
+}
+
+.card-input {
+  flex: 1;
+  border: 2px solid #3b82f6;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  margin-left: 8px;
+}
+
+.card-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-delete:hover {
+  opacity: 1;
+}
+
+.card-delete:active {
+  transform: scale(0.95);
+}
+
