@@ -41,48 +41,32 @@ export const KanbanBoard: React.FC = () => {
 
     const activeId = active.id as string;
     const overId = over.id as string;
-
     const activeCard = cards.find((c) => c.id === activeId);
+
     if (!activeCard) {
       setActiveId(null);
       return;
     }
 
-    // Check if dropped on a column
     const overColumn = columns.find((col) => col.id === overId);
     if (overColumn) {
-      const targetColumnCards = cards
-        .filter((c) => c.columnId === overColumn.id)
-        .map((c) => c.id);
-      const newIndex = targetColumnCards.length;
-      moveCard(activeId, overColumn.id as ColumnId, newIndex);
+      const targetCards = cards.filter((c) => c.columnId === overColumn.id);
+      moveCard(activeId, overColumn.id as ColumnId, targetCards.length);
       setActiveId(null);
       return;
     }
 
-    // Check if dropped on another card
     const overCard = cards.find((c) => c.id === overId);
     if (overCard) {
       const targetColumnId = overCard.columnId as ColumnId;
-      const targetColumnCards = cards
-        .filter((c) => c.columnId === targetColumnId)
-        .map((c) => c.id);
-      const overIndex = targetColumnCards.indexOf(overId);
+      const targetCards = cards.filter((c) => c.columnId === targetColumnId);
+      const overIndex = targetCards.findIndex((c) => c.id === overId);
       
-      // Calculate the correct insertion index
       if (activeCard.columnId === targetColumnId) {
-        // Moving within the same column
-        const activeIndex = targetColumnCards.indexOf(activeId);
-        let newIndex = overIndex;
-        // If dragging down, insert after the target; if dragging up, insert before
-        if (activeIndex < overIndex) {
-          newIndex = overIndex + 1;
-        } else {
-          newIndex = overIndex;
-        }
+        const activeIndex = targetCards.findIndex((c) => c.id === activeId);
+        const newIndex = activeIndex < overIndex ? overIndex + 1 : overIndex;
         moveCard(activeId, targetColumnId, newIndex);
       } else {
-        // Moving to a different column - insert at the position of the target card
         moveCard(activeId, targetColumnId, overIndex);
       }
       setActiveId(null);

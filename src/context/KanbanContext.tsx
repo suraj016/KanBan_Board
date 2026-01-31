@@ -57,7 +57,6 @@ export const KanbanProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       const card = prev.find((c) => c.id === cardId);
       if (!card) return prev;
 
-      // If moving within the same column, handle reordering
       if (card.columnId === targetColumnId) {
         const columnCards = prev.filter((c) => c.columnId === targetColumnId);
         const otherCards = prev.filter((c) => c.columnId !== targetColumnId);
@@ -65,26 +64,22 @@ export const KanbanProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         
         if (oldIndex === newIndex) return prev;
 
-        const reorderedColumnCards = [...columnCards];
-        const [movedCard] = reorderedColumnCards.splice(oldIndex, 1);
-        reorderedColumnCards.splice(newIndex, 0, movedCard);
+        const reordered = [...columnCards];
+        const [moved] = reordered.splice(oldIndex, 1);
+        reordered.splice(newIndex, 0, moved);
 
-        return [...otherCards, ...reorderedColumnCards];
+        return [...otherCards, ...reordered];
       }
 
-      // Moving to a different column
       const otherCards = prev.filter((c) => c.id !== cardId);
-      const targetColumnCards = otherCards.filter((c) => c.columnId === targetColumnId);
-      const nonTargetCards = otherCards.filter((c) => c.columnId !== targetColumnId);
-
-      const beforeCards = targetColumnCards.slice(0, newIndex);
-      const afterCards = targetColumnCards.slice(newIndex);
+      const targetCards = otherCards.filter((c) => c.columnId === targetColumnId);
+      const restCards = otherCards.filter((c) => c.columnId !== targetColumnId);
 
       return [
-        ...nonTargetCards,
-        ...beforeCards,
+        ...restCards,
+        ...targetCards.slice(0, newIndex),
         { ...card, columnId: targetColumnId },
-        ...afterCards,
+        ...targetCards.slice(newIndex),
       ];
     });
   };

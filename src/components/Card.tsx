@@ -50,8 +50,9 @@ export const Card: React.FC<CardProps> = ({ card, columnColor }) => {
 
   const handleBlur = () => {
     setIsEditing(false);
-    if (title.trim() && title !== card.title) {
-      updateCardTitle(card.id, title.trim());
+    const trimmedTitle = title.trim();
+    if (trimmedTitle && trimmedTitle !== card.title) {
+      updateCardTitle(card.id, trimmedTitle);
     } else {
       setTitle(card.title);
     }
